@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>栈 | 是小荷同学吖</title><meta name="author" content="是小荷同学吖"><meta name="copyright" content="是小荷同学吖"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="栈的定义栈（Stack）是一种常见的线性数据结构，其特点是遵循“后进先出”（LIFO，Last In First Out）原则。也就是说，最后被压入栈中的元素会最先被弹出。 栈的基本操作包括：  入栈（Push）：将一个元素添加到栈的顶部。 出栈（Pop）：移除栈顶元素，并返回该元素。 查看栈顶元素（Peek 或 Top）：返回栈顶的元素，但不移除它。 判断栈是否为空（IsEmpty）：检查栈是否">
+<meta property="og:type" content="article">
+<meta property="og:title" content="栈">
+<meta property="og:url" content="http://chips5114.github.io/2026/08/21/%E6%A0%88/index.html">
+<meta property="og:site_name" content="是小荷同学吖">
+<meta property="og:description" content="栈的定义栈（Stack）是一种常见的线性数据结构，其特点是遵循“后进先出”（LIFO，Last In First Out）原则。也就是说，最后被压入栈中的元素会最先被弹出。 栈的基本操作包括：  入栈（Push）：将一个元素添加到栈的顶部。 出栈（Pop）：移除栈顶元素，并返回该元素。 查看栈顶元素（Peek 或 Top）：返回栈顶的元素，但不移除它。 判断栈是否为空（IsEmpty）：检查栈是否">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://chips5114.github.io/img/%E5%A4%B4%E5%83%8F.jpg">
+<meta property="article:published_time" content="2026-08-21T03:08:10.000Z">
+<meta property="article:modified_time" content="2026-08-21T03:08:32.843Z">
+<meta property="article:author" content="是小荷同学吖">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://chips5114.github.io/img/%E5%A4%B4%E5%83%8F.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "栈",
+  "url": "http://chips5114.github.io/2026/08/21/%E6%A0%88/",
+  "image": "http://chips5114.github.io/img/%E5%A4%B4%E5%83%8F.jpg",
+  "datePublished": "2026-08-21T03:08:10.000Z",
+  "dateModified": "2026-08-21T03:08:32.843Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "是小荷同学吖",
+      "url": "http://chips5114.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://chips5114.github.io/2026/08/21/%E6%A0%88/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '栈',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="https://cdn1.tianli0.top/npm/element-ui@2.15.6/packages/theme-chalk/lib/index.css"><link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont/style.css"><meta name="generator" content="Hexo 8.1.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/%E5%A4%B4%E5%83%8F.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: \img\封面.jpg;"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">是小荷同学吖</span></a><a class="nav-page-title" href="/"><span class="site-name">栈</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">栈</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-08-21T03:08:10.000Z" title="发表于 2026-08-21 11:08:10">2026-08-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-08-21T03:08:32.843Z" title="更新于 2026-08-21 11:08:32">2026-08-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Python%E5%AD%A6%E4%B9%A0/">Python学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="栈的定义"><a href="#栈的定义" class="headerlink" title="栈的定义"></a>栈的定义</h2><p>栈（Stack）是一种常见的线性数据结构，其特点是遵循“后进先出”（LIFO，Last In First Out）原则。也就是说，最后被压入栈中的元素会最先被弹出。</p>
+<p>栈的基本操作包括：</p>
+<ol>
+<li><strong>入栈（Push）</strong>：将一个元素添加到栈的顶部。</li>
+<li><strong>出栈（Pop）</strong>：移除栈顶元素，并返回该元素。</li>
+<li><strong>查看栈顶元素（Peek 或 Top）</strong>：返回栈顶的元素，但不移除它。</li>
+<li><strong>判断栈是否为空（IsEmpty）</strong>：检查栈是否没有任何元素。</li>
+</ol>
+<h2 id="栈的特性"><a href="#栈的特性" class="headerlink" title="栈的特性"></a>栈的特性</h2><ul>
+<li><strong>LIFO原则</strong>：栈中的元素是从栈顶添加和移除的，栈顶的元素是最先被访问的。</li>
+<li><strong>只能在一端操作</strong>：栈的操作只能在栈顶进行。</li>
+</ul>
+<h2 id="栈的应用"><a href="#栈的应用" class="headerlink" title="栈的应用"></a>栈的应用</h2><ol>
+<li><strong>函数调用管理</strong>：在程序运行过程中，函数调用的顺序和返回都由栈来管理。每次函数调用时，程序会把当前函数的信息压入栈中，函数执行完成后会从栈中弹出，返回到调用函数的位置。</li>
+<li><strong>表达式求值</strong>：栈常用于数学表达式的求值，尤其是处理括号匹配和运算符优先级时。</li>
+<li><strong>浏览器的历史记录</strong>：浏览器在你浏览网页时会将每个页面的链接压入栈中，这样你按回退按钮时就可以弹出最近访问的页面。</li>
+</ol>
+<h2 id="栈的实现"><a href="#栈的实现" class="headerlink" title="栈的实现"></a>栈的实现</h2><p>栈可以通过数组或链表来实现。常见的实现方式有：</p>
+<ul>
+<li><strong>数组实现</strong>：使用数组来存储栈的元素，栈顶指针记录栈顶元素的位置。</li>
+<li><strong>链表实现</strong>：通过链表的头结点来表示栈顶，头结点指向栈顶元素。</li>
+</ul>
+<p>栈的操作时间复杂度通常是 O(1)，即每次操作的时间是常数级别的，因为它只涉及栈顶元素。</p>
+<h3 id="1-pop"><a href="#1-pop" class="headerlink" title="1. pop()"></a>1. <strong><code>pop()</code></strong></h3><p><code>pop()</code> 默认删除并返回列表中的 <strong>最后一个</strong> 元素。</p>
+<h4 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span>.pop()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>默认行为</strong>：删除并返回列表的最后一个元素。</li>
+<li><strong>时间复杂度</strong>：<code>O(1)</code>，因为删除最后一个元素不需要移动其他元素，操作非常快速。</li>
+</ul>
+<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lst = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">last_element = lst.pop()  <span class="comment"># 删除并返回最后一个元素</span></span><br><span class="line"><span class="built_in">print</span>(last_element)  <span class="comment"># 输出: 5</span></span><br><span class="line"><span class="built_in">print</span>(lst)           <span class="comment"># 输出: [1, 2, 3, 4]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>输出</p>
+<p>：</p>
+<ul>
+<li>返回 <code>5</code>，即列表中的最后一个元素。</li>
+<li>修改后的列表变为 <code>[1, 2, 3, 4]</code>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-pop-i"><a href="#2-pop-i" class="headerlink" title="2. pop(i)"></a>2. <strong><code>pop(i)</code></strong></h3><p><code>pop(i)</code> 允许你删除并返回 <strong>指定索引位置 <code>i</code></strong> 的元素。如果你指定的索引 <code>i</code> 超出了范围，会引发 <code>IndexError</code> 错误。</p>
+<h4 id="语法：-1"><a href="#语法：-1" class="headerlink" title="语法："></a>语法：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span>.pop(i)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>参数：<code>i</code>是要删除元素的索引位置。如果 <code>i</code> 是负数，它表示从列表的末尾开始计数。例如，<code>-1</code> 是列表的最后一个元素，<code>-2</code> 是倒数第二个元素，依此类推。</li>
+<li><strong>时间复杂度</strong>：<code>O(n)</code>，因为删除指定位置的元素后，后面的元素会向前移动以填补空缺。</li>
+</ul>
+<h4 id="示例：-1"><a href="#示例：-1" class="headerlink" title="示例："></a>示例：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lst = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">element = lst.pop(<span class="number">2</span>)  <span class="comment"># 删除并返回索引为2的元素</span></span><br><span class="line"><span class="built_in">print</span>(element)  <span class="comment"># 输出: 3</span></span><br><span class="line"><span class="built_in">print</span>(lst)      <span class="comment"># 输出: [1, 2, 4, 5]</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>输出：<ul>
+<li>返回 <code>3</code>，即索引为 <code>2</code> 的元素。</li>
+<li>修改后的列表变为 <code>[1, 2, 4, 5]</code>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="【栈4】十六进制权重数组分析"><a href="#【栈4】十六进制权重数组分析" class="headerlink" title="【栈4】十六进制权重数组分析"></a>【栈4】十六进制权重数组分析</h2><blockquote>
+<p>本题为<a target="_blank" rel="noopener" href="https://codefun2000.com/p/P2385">2024年9月19日华为-秋招</a>机考原题</p>
+</blockquote>
+<h3 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h3><p>设计一个程序来处理特定的数组分析问题。</p>
+<p>给定一个非负整数数组arr<em>a**rr</em>，其中每个整数用其十六进制表示中的数字之和来表示其“权重”(权重计算是基于十六进制表示中每位数字的和，00 ~ 99代表权重00~ 99，权重A:10、B:11、C:12、D:13、E:14、F:15<em>A</em>:10、<em>B</em>:11、<em>C</em>:12、<em>D</em>:13、<em>E</em>:14、<em>F</em>:15)。</p>
+<p>您的任务是找出数组中每个元素右侧第一个具有更大“权重”的元素，并返回一个新的数组，该数组包含这些元素的索引。</p>
+<p>如果一个元素的右侧没有更大“权重”的元素，则对应位置返回 −1−1。</p>
+<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><p>第一行:一个整数 N<em>N</em>，表示数组 arr<em>a**rr</em> 的大小，0&lt;N&lt;1000000&lt;<em>N</em>&lt;100000</p>
+<p>第二行:N<em>N</em> 个由空格分隔的非负整数，表示数组 arr<em>a**rr</em>，0≤arri≤0xffffffff0≤<em>a<strong>rr</strong>i</em>≤0<em>x**ffffffff</em></p>
+<h3 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h3><p>一行:N<em>N</em>个整数，表示每个元素右侧第一个权重更大的元素的索引，如果不存在则为−1−1。</p>
+<h3 id="样例1"><a href="#样例1" class="headerlink" title="样例1"></a>样例1</h3><p><strong>输入</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">12 3 24</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1 2 -1</span><br></pre></td></tr></table></figure>
+
+<p><strong>说明</strong></p>
+<p>十六进制表示分别为:[C,3,18][<em>C</em>,3,18]</p>
+<p>对应的权重分别为:[12,3,1+8&#x3D;9][12,3,1+8&#x3D;9]</p>
+<p>对于第一个元素 1212(权重1212)，其右侧没有更大权重的元素，因此返回 −1−1</p>
+<p>对于第二个元素 33(权重33)，其右侧第一个更大权重的元素是2424(权重99)，位于索引22</p>
+<p>对于第三个元素 2424(权重99)，其不侧没有更大权重的元素，因此返回 −1−1。</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">compute_weight</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    s = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> n &gt;<span class="number">0</span>:</span><br><span class="line">        digit = n &amp; <span class="number">0xF</span></span><br><span class="line">        s += digit</span><br><span class="line">        n &gt;&gt;= <span class="number">4</span></span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    N = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    arr = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split()))</span><br><span class="line"></span><br><span class="line">    weights =[compute_weight(num) <span class="keyword">for</span> num <span class="keyword">in</span> arr]</span><br><span class="line"></span><br><span class="line">    ans = [-<span class="number">1</span>] * N</span><br><span class="line"></span><br><span class="line">    stack = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(N-<span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">while</span> stack <span class="keyword">and</span> weights[stack[-<span class="number">1</span>]] &lt;= weights[i]:</span><br><span class="line">            stack.pop()</span><br><span class="line">        <span class="keyword">if</span> stack:</span><br><span class="line">            ans[i] = stack[-<span class="number">1</span>]</span><br><span class="line">        stack.append(i)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(*ans)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://chips5114.github.io">是小荷同学吖</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://chips5114.github.io/2026/08/21/%E6%A0%88/">http://chips5114.github.io/2026/08/21/%E6%A0%88/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://chips5114.github.io" target="_blank">是小荷同学吖</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python/">Python</a></div><div class="post-share"><div class="social-share" data-image="/img/%E5%A4%B4%E5%83%8F.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/08/15/%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="字符串"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">字符串</div></div><div class="info-2"><div class="info-item-1">Python中的字符串处理在 Python 中，字符串是非常常用的基本数据类型。Python 的字符串（str 类型）可以看作是字符的有序集合。与 C++ 中的 std::string 类似，Python 的字符串也提供了丰富的操作接口。 Python字符串的基本特性 不可变性：字符串在 Python 中是不可变的。一旦创建了一个字符串，你无法更改它的内容。 动态大小：与 C++ 的 std::string 类似，Python 的字符串在内存中是动态大小的，可以根据需要自动增长。 丰富的操作：Python 提供了许多内建方法来操作字符串，如拼接、查找、替换、切片等。  常用的 Python 字符串方法 构造字符串 123s1 = &quot;Hello&quot;        # 直接赋值创建字符串s2 = str(123)       # 从其他数据类型转换为字符串s3 = &quot;a&quot; * 10       # 创建一个包含 10 个 &#x27;a&#x27; 字符的字符串  字符串拼接（连接） 1234s1 = &quot;Hello&quot;s2 = ...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/08/15/%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="字符串"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-15</div><div class="info-item-2">字符串</div></div><div class="info-2"><div class="info-item-1">Python中的字符串处理在 Python 中，字符串是非常常用的基本数据类型。Python 的字符串（str 类型）可以看作是字符的有序集合。与 C++ 中的 std::string 类似，Python 的字符串也提供了丰富的操作接口。 Python字符串的基本特性 不可变性：字符串在 Python 中是不可变的。一旦创建了一个字符串，你无法更改它的内容。 动态大小：与 C++ 的 std::string 类似，Python 的字符串在内存中是动态大小的，可以根据需要自动增长。 丰富的操作：Python 提供了许多内建方法来操作字符串，如拼接、查找、替换、切片等。  常用的 Python 字符串方法 构造字符串 123s1 = &quot;Hello&quot;        # 直接赋值创建字符串s2 = str(123)       # 从其他数据类型转换为字符串s3 = &quot;a&quot; * 10       # 创建一个包含 10 个 &#x27;a&#x27; 字符的字符串  字符串拼接（连接） 1234s1 = &quot;Hello&quot;s2 = ...</div></div></div></a><a class="pagination-related" href="/2026/08/10/ACM%E6%A8%A1%E5%BC%8F%E5%85%A5%E9%97%A8/" title="ACM模式入门"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-10</div><div class="info-item-2">ACM模式入门</div></div><div class="info-2"><div class="info-item-1">1a, b = map(int, input().split())   input() 函数用于从标准输入（通常是键盘）读取一行输入。 split() 方法将输入的字符串按空格分割成多个部分，返回一个列表。例如，输入 &quot;3 5&quot; 会被分割成 [&quot;3&quot;, &quot;5&quot;]。 map(int, ...) 将列表中的每个元素转换为整数类型。 a, b = ... 将转换后的整数分别赋值给变量 a 和 b。   ACM测评系统给出的反馈：当选手提交代码后，OJ平台会给出详细的评判反馈。常见的反馈信息包括：  AC（Accepted，接受）： 表示提交的程序正确，输出符合要求，并且在规定的时间和内存限制内运行完成。AC是最理想的反馈，说明选手的代码通过了所有的测试用例。   WA（Wrong Answer，错误答案）： 这表示程序的输出与期望的结果不符。选手需要检查程序中的逻辑错误，特别是输入输出的处理部分，确保符合题目要求。   TLE（Time Limit Exceeded，超时）： 如果程序运行时间超过了题目规定的时间限制，就会出现...</div></div></div></a><a class="pagination-related" href="/2026/08/14/%E5%88%97%E8%A1%A8%E4%B8%8E%E7%9F%A9%E9%98%B5/" title="列表、数组与矩阵"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-14</div><div class="info-item-2">列表、数组与矩阵</div></div><div class="info-2"><div class="info-item-1">列表存储列表是 Python 中最常用的动态数组类型，可以存储任意类型的元素，并且支持动态扩展。  索引从0开始：列表的第一个元素索引为0，最后一个元素的索引为len(list) - 1。 12print(b[0])  # 输出: 1print(b[-1]) # 输出: 5  动态扩展：列表的大小可以动态改变，可以随时添加或删除元素。 123456789b.append(6)    # 在列表末尾添加元素6b.insert(0, 0) # 在索引0的位置插入元素0print(b)       # 输出: [0, 1, 2, 3, 4, 5, 6]b.pop()        # 删除并返回最后一个元素print(b)       # 输出: [0, 1, 2, 3, 4, 5]del b[0]       # 删除索引0的元素print(b)       # 输出: [1, 2, 3, 4, 5]  动态数组（array 模块）如果需要存储大量的数值数据，并且希望节省内存，可以使用 array 模块。但对于大多数竞赛题目，使用列表已经足够。 示例： 12345678910impo...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/%E5%A4%B4%E5%83%8F.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">是小荷同学吖</div><div class="author-info-description">学习记录/生活分享 欢迎访问呀~</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/chips5114"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">栈的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-text">栈的特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-text">栈的应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">栈的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-pop"><span class="toc-text">1. pop()</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%EF%BC%9A"><span class="toc-text">语法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="toc-text">示例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-pop-i"><span class="toc-text">2. pop(i)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%EF%BC%9A-1"><span class="toc-text">语法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-1"><span class="toc-text">示例：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%80%90%E6%A0%884%E3%80%91%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E6%9D%83%E9%87%8D%E6%95%B0%E7%BB%84%E5%88%86%E6%9E%90"><span class="toc-text">【栈4】十六进制权重数组分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%86%85%E5%AE%B9"><span class="toc-text">题目内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0"><span class="toc-text">输入描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0"><span class="toc-text">输出描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B7%E4%BE%8B1"><span class="toc-text">样例1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94"><span class="toc-text">解答</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/21/%E6%A0%88/" title="栈">栈</a><time datetime="2026-08-21T03:08:10.000Z" title="发表于 2026-08-21 11:08:10">2026-08-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/15/%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="字符串">字符串</a><time datetime="2026-08-15T03:49:17.000Z" title="发表于 2026-08-15 11:49:17">2026-08-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/14/%E5%88%97%E8%A1%A8%E4%B8%8E%E7%9F%A9%E9%98%B5/" title="列表、数组与矩阵">列表、数组与矩阵</a><time datetime="2026-08-14T07:32:01.000Z" title="发表于 2026-08-14 15:32:01">2026-08-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/08/10/ACM%E6%A8%A1%E5%BC%8F%E5%85%A5%E9%97%A8/" title="ACM模式入门">ACM模式入门</a><time datetime="2026-08-10T03:33:47.000Z" title="发表于 2026-08-10 11:33:47">2026-08-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/28/%E2%9C%8DRobot%20Learning%EF%BC%9AA%20Tutorial%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="✍Robot Learning: A Tutorial学习笔记">✍Robot Learning: A Tutorial学习笔记</a><time datetime="2025-10-28T05:59:58.000Z" title="发表于 2025-10-28 13:59:58">2025-10-28</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 是小荷同学吖</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><div class="js-pjax"></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
